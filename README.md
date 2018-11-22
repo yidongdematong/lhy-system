@@ -1,3 +1,2 @@
 # lhy-system
 basic
-d

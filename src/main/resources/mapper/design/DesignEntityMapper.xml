@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.order.modules.design.dao.DesignEntityMapper">
+    <resultMap id="BaseResultMap" type="com.order.modules.design.entity.DesignEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="design_title" jdbcType="VARCHAR" property="designTitle"/>
+        <result column="design_logo" jdbcType="VARCHAR" property="designLogo"/>
+        <result column="design_type" jdbcType="INTEGER" property="designType"/>
+        <result column="cover_img_path" jdbcType="VARCHAR" property="coverImgPath"/>
+        <result column="cover_img_height" jdbcType="INTEGER" property="coverImgHeight"/>
+        <result column="product_desc" jdbcType="VARCHAR" property="productDesc"/>
+        <result column="custom_name" jdbcType="VARCHAR" property="customName"/>
+        <result column="custom_service" jdbcType="VARCHAR" property="customService"/>
+        <result column="industry_name" jdbcType="VARCHAR" property="industryName"/>
+        <result column="created_date" jdbcType="BIGINT" property="createdDate"/>
+        <result column="product_detail" jdbcType="VARCHAR" property="productDetail"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, design_title, design_logo, design_type, cover_img_path, cover_img_height, product_desc, 
+    custom_name, custom_service, industry_name, created_date, product_detail
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from design_table
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from design_table
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.order.modules.design.entity.DesignEntity">
+    insert into design_table (id, design_title, design_logo, 
+      design_type, cover_img_path, cover_img_height, 
+      product_desc, custom_name, custom_service, 
+      industry_name, created_date, product_detail
+      )
+    values (#{id,jdbcType=BIGINT}, #{designTitle,jdbcType=VARCHAR}, #{designLogo,jdbcType=VARCHAR}, 
+      #{designType,jdbcType=INTEGER}, #{coverImgPath,jdbcType=VARCHAR}, #{coverImgHeight,jdbcType=INTEGER}, 
+      #{productDesc,jdbcType=VARCHAR}, #{customName,jdbcType=VARCHAR}, #{customService,jdbcType=VARCHAR}, 
+      #{industryName,jdbcType=VARCHAR}, #{createdDate,jdbcType=BIGINT}, #{productDetail,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.order.modules.design.entity.DesignEntity">
+        insert into design_table
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="designTitle != null">
+                design_title,
+            </if>
+            <if test="designLogo != null">
+                design_logo,
+            </if>
+            <if test="designType != null">
+                design_type,
+            </if>
+            <if test="coverImgPath != null">
+                cover_img_path,
+            </if>
+            <if test="coverImgHeight != null">
+                cover_img_height,
+            </if>
+            <if test="productDesc != null">
+                product_desc,
+            </if>
+            <if test="customName != null">
+                custom_name,
+            </if>
+            <if test="customService != null">
+                custom_service,
+            </if>
+            <if test="industryName != null">
+                industry_name,
+            </if>
+            <if test="createdDate != null">
+                created_date,
+            </if>
+            <if test="productDetail != null">
+                product_detail,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="designTitle != null">
+                #{designTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="designLogo != null">
+                #{designLogo,jdbcType=VARCHAR},
+            </if>
+            <if test="designType != null">
+                #{designType,jdbcType=INTEGER},
+            </if>
+            <if test="coverImgPath != null">
+                #{coverImgPath,jdbcType=VARCHAR},
+            </if>
+            <if test="coverImgHeight != null">
+                #{coverImgHeight,jdbcType=INTEGER},
+            </if>
+            <if test="productDesc != null">
+                #{productDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="customName != null">
+                #{customName,jdbcType=VARCHAR},
+            </if>
+            <if test="customService != null">
+                #{customService,jdbcType=VARCHAR},
+            </if>
+            <if test="industryName != null">
+                #{industryName,jdbcType=VARCHAR},
+            </if>
+            <if test="createdDate != null">
+                #{createdDate,jdbcType=BIGINT},
+            </if>
+            <if test="productDetail != null">
+                #{productDetail,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.order.modules.design.entity.DesignEntity">
+        update design_table
+        <set>
+            <if test="designTitle != null">
+                design_title = #{designTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="designLogo != null">
+                design_logo = #{designLogo,jdbcType=VARCHAR},
+            </if>
+            <if test="designType != null">
+                design_type = #{designType,jdbcType=INTEGER},
+            </if>
+            <if test="coverImgPath != null">
+                cover_img_path = #{coverImgPath,jdbcType=VARCHAR},
+            </if>
+            <if test="coverImgHeight != null">
+                cover_img_height = #{coverImgHeight,jdbcType=INTEGER},
+            </if>
+            <if test="productDesc != null">
+                product_desc = #{productDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="customName != null">
+                custom_name = #{customName,jdbcType=VARCHAR},
+            </if>
+            <if test="customService != null">
+                custom_service = #{customService,jdbcType=VARCHAR},
+            </if>
+            <if test="industryName != null">
+                industry_name = #{industryName,jdbcType=VARCHAR},
+            </if>
+            <if test="createdDate != null">
+                created_date = #{createdDate,jdbcType=BIGINT},
+            </if>
+            <if test="productDetail != null">
+                product_detail = #{productDetail,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.order.modules.design.entity.DesignEntity">
+    update design_table
+    set design_title = #{designTitle,jdbcType=VARCHAR},
+      design_logo = #{designLogo,jdbcType=VARCHAR},
+      design_type = #{designType,jdbcType=INTEGER},
+      cover_img_path = #{coverImgPath,jdbcType=VARCHAR},
+      cover_img_height = #{coverImgHeight,jdbcType=INTEGER},
+      product_desc = #{productDesc,jdbcType=VARCHAR},
+      custom_name = #{customName,jdbcType=VARCHAR},
+      custom_service = #{customService,jdbcType=VARCHAR},
+      industry_name = #{industryName,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=BIGINT},
+      product_detail = #{productDetail,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+    <select id="getDesignList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from design_table
+        ORDER BY id
+        limit #{pager.offset},#{pager.limit}
+    </select>
+    <select id="getDesignListCount" resultType="Integer">
+        select
+         count(id)
+        from design_table
+    </select>
+
+</mapper>
